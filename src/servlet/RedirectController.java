@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +15,14 @@ import helper.CommandFactory;
 /**
  * Servlet implementation class ServletFrontController
  */
-@WebServlet("/ServletFrontController")
-public class ServletFrontController extends HttpServlet {
+@WebServlet("/RedirectController")
+public class RedirectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletFrontController() {
+    public RedirectController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +36,7 @@ public class ServletFrontController extends HttpServlet {
 		Command command = new CommandFactory().getCommand(request, context);
 		try {
 			String page = command.execute(request, response);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);
+			response.sendRedirect(request.getContextPath()+page);
 		}
 		catch(Exception error) {
 			throw new ServletException(error);

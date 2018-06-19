@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>Front Controller Example</title>
+	<title>Result Page</title>
 </head>
 <body>
 	<h1>${example}</h1>
